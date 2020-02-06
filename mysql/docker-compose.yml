@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ci_mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin*123
+      MYSQL_DATABASE: cidb
+      MYSQL_USER: ci_operator
+      MYSQL_PASSWORD: ci#123
+    ports:
+      - 3306:3306
+    volumes:
+      - /data/mysql/data:/var/lib/mysql
+
