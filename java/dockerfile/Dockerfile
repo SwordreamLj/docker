@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM maven:3.6.3-jdk-8
 
 ENV GRADLE_HOME /opt/gradle
 ENV GRADLE_VERSION 5.2.1
@@ -12,4 +12,5 @@ RUN set -o errexit -o nounset \
     && mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
     && ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
     && echo "Testing Gradle installation" \
-    && gradle --version
+    && gradle --version \
+    && sed -i '/<\/servers>/i\<server>\n<id>artifactory<\/id>\n<username>uploadman<\/username>\n<password>uploadman<\/password>\n<\/server>' /usr/share/maven/conf/settings.xml
