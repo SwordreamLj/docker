@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+ 
+<servers>
+  <server>
+    <id>maven-releases</id>
+    <username>uploadman</username>
+    <password>uploadman</password>
+  </server>
+
+  <server>
+    <id>maven-snapshots</id>
+    <username>uploadman</username>
+    <password>uploadman</password>
+  </server>
+  <server>
+    <id>artifactory</id>
+    <username>uploadman</username>
+    <password>uploadman</password>
+  </server>
+</servers>
+
+<profiles>
+
+    <profile>
+      <id>NexusRepo</id>
+      <repositories>
+        <repository>
+          <id>nexus</id>
+          <name>Nexus3 Repository</name>
+          <url>http://nesux.self.com/repository/maven-public/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+
+</profiles>
+
+<activeProfiles>
+  <activeProfile>NexusRepo</activeProfile>
+</activeProfiles>
+
+
+<mirrors>
+
+ 
+ 
+  <mirror>
+    <id>NexusRepo</id>
+    <!-- *号代表所有仓库，此处也可以单独设置，以逗号隔开 -->
+    <mirrorOf>*</mirrorOf>
+    <name>NexusRepo</name>
+    <url>http://nesux.self.com/repository/maven-public/</url>
+  </mirror>
+  
+   
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>
+          http://maven.aliyun.com/nexus/content/groups/public/
+      </url>
+      <mirrorOf>central</mirrorOf>        
+    </mirror>
+</mirrors>
+</settings>
+ 
+
